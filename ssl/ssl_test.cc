@@ -12882,12 +12882,6 @@ TEST(SSLTest, SSLFileTests) {
   GTEST_SKIP();
 #endif
 
-  struct FileCloser {
-    void operator()(FILE *f) const { fclose(f); }
-  };
-
-  using ScopedFILE = std::unique_ptr<FILE, FileCloser>;
-
   char rsa_pem_filename[PATH_MAX];
   char ecdsa_pem_filename[PATH_MAX];
   ASSERT_TRUE(createTempFILEpath(rsa_pem_filename));
